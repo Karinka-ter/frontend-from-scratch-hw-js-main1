@@ -13,6 +13,8 @@ let isWinningDouble
 
 if((dice1 === dice2) && (dice1 > 3) && (dice2 > 3)){
   isWinningDouble = true
+} else {
+  isWinningDouble = false
 }
 
 
