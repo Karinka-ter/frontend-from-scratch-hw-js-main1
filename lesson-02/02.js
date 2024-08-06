@@ -23,11 +23,11 @@ if((dice1 === dice2) && (dice1 > 3) && (dice2 > 3)){
 // your code
 
 
-console.log('Первый бросок: ' + dice1)
-console.log('Второй бросок: ' + dice2)
+document.write('Первый бросок: ' + dice1)
+document.write('Второй бросок: ' + dice2)
 if (isWinningDouble) {
-  console.log('Выигрышный дубль!')
+  document.write('Выигрышный дубль!')
 } else {
-  console.log('Не выигрышный дубль.')
+  document.write('Не выигрышный дубль.')
 }
 
