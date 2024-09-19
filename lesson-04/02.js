@@ -25,3 +25,5 @@ for (let i = 0; i < array.length; i++) {
 }
 return myArray
 }
+
+console.log(findUniqueElements([1,2,2,3,4,4,5]))
