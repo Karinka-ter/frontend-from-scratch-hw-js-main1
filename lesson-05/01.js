@@ -19,6 +19,7 @@ const game = {
     for (let key in game.resources) {
      if (resource in this.resources){
       this.resources[resource] += amount
+      break
      } else {
       console.log("Invalid resource")
      }
@@ -27,3 +28,5 @@ const game = {
 }
 
 
+game.addResource('gold',70)
+console.log(game.resources.gold);
