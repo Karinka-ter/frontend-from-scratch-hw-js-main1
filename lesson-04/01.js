@@ -24,4 +24,4 @@ for(i=0; i<array.length ; i++){
  return otv
 }
 
-console.log(includesElement([1,2,3], 2))
+
