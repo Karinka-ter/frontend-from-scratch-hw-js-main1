@@ -19,5 +19,4 @@ function capitalizeWords(string) {
   }
   return str
 }
- const otv = capitalizeWords("hello world from javascript")
-alert(otv);
+ 
