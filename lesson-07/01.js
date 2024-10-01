@@ -9,7 +9,7 @@
 function capitalizeWords(string) {
   let str = ''
   str += string[0].toUpperCase()
-  for(i=1;i<string.length;i++){ 
+  for( let i=1;i<string.length;i++){ 
     if( string[i-1] === ' '){
       
       str += string[i].toUpperCase() 
