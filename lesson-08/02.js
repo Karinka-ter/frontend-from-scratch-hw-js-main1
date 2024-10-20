@@ -30,24 +30,40 @@ const cancelButton = document.getElementById('cancel')
 const countdownDisplay = document.getElementById('countdown')
 
 let isTimerStarted = false
-let timerId
 
+
+let intervalId = null; // Хранит ID интервала для контроля работы таймера
+let initialTime = 3; // Начальное значение отсчёта
+let timerId = initialTime; // Текущее значение таймера
+
+// Обработчик для кнопки "Старт"
 startButton.addEventListener('click', () => {
-  let counter = 3;
-
-  const intervalId = setInterval(() => {
-    countdownDisplay.textContent = counter;
-    counter--;
-
-    cancelButton.addEventListener('click', () => {
-      clearInterval(intervalId)
-      countdownDisplay.textContent = "Отменено"
-    })
-
-    if (counter < 0) {
-      clearInterval(intervalId); // Останавливаем интервал
-      countdownDisplay.textContent = "🚀"; // Показываем ракету
+    if (intervalId !== null) {
+        return; // Если таймер уже запущен, не даём запустить его повторно
     }
-  }, 1000); // Интервал в 1 секунду
+
+    timerId = initialTime; // Сбрасываем таймер к начальному значению
+    countdownDisplay.textContent = timerId; // Отображаем 3 немедленно
+
+    // Устанавливаем интервал для обратного отсчёта
+    intervalId = setInterval(() => {
+        timerId--; // Уменьшаем значение таймера
+        countdownDisplay.textContent = timerId; // Обновляем отображение
+
+        // Когда таймер достигает 0, останавливаем его и отображаем ракету
+        if (timerId < 1) {
+            clearInterval(intervalId); // Останавливаем таймер
+            intervalId = null; // Сбрасываем ID интервала, чтобы можно было запустить снова
+            countdownDisplay.textContent = "🚀"; // Отображаем ракету
+        }
+    }, 1000); // Интервал в 1 секунду
 });
 
+// Обработчик для кнопки "Отмена"
+cancelButton.addEventListener('click', () => {
+    if (intervalId !== null) { // Если таймер работает
+        clearInterval(intervalId); // Останавливаем таймер
+        intervalId = null; // Сбрасываем ID интервала
+        countdownDisplay.textContent = "Отменено"; // Отображаем сообщение об отмене
+    }
+});
